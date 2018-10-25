@@ -1,0 +1,17 @@
+{
+  "name": "composer",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "default": "node ./bin/www",
+    "dev": "NODE_ENV=dev node ./bin/www",
+    "prod": "NODE_ENV=production node ./bin/www"
+  },
+  "dependencies": {
+    "debug": "~2.6.9",
+    "express": "~4.16.0",
+    "http-errors": "~1.6.2",
+    "morgan": "~1.9.0",
+    "nconf": "latest"
+  }
+}
