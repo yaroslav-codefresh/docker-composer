@@ -24,6 +24,6 @@ module.exports = class Command {
 
   _runInternal() {
     log.warn('Command run on base class');
-    return Promise.resolve(); // todo : maybe reject
+    return Promise.reject();
   }
 };

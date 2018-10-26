@@ -9,15 +9,14 @@
   },
   "dependencies": {
     "debug": "~2.6.9",
-    "docker-client": "^1.38.1",
+    "dockerode": "^2.5.7",
     "express": "~4.16.0",
     "express-fileupload": "^1.0.0",
     "http-errors": "~1.6.2",
     "morgan": "~1.9.0",
     "nconf": "^0.10.0",
     "parser-yaml": "^0.1.1",
-    "winston": "^3.1.0",
-    "yaml": "^1.0.0"
+    "winston": "^3.1.0"
   },
   "devDependencies": {
     "@types/node": "^10.12.0"

@@ -1,7 +1,7 @@
 const log = require('../logger');
-const Command = require('../command');
+const BaseCommand = require('./BaseCommand');
 
-module.exports = class VolumeCommand extends Command {
+module.exports = class VolumeCommand extends BaseCommand {
   constructor(name, options) {
     super(name, options)
   }
