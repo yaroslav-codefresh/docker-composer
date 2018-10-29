@@ -53,7 +53,9 @@ module.exports = class DockerService {
       }
     }
 
-    await Promise.all(Object.values(commands).map(c => c.run()));
+    const runnable = Object.values(commands);
+    await Promise.all(runnable.map(c => c.run()));
+    runnable.forEach(c => c.cleanUp());
     return {ok: true}
   }
 };

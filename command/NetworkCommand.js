@@ -1,4 +1,5 @@
 const log = require('../logger');
+const timer = require('../helpers/timer');
 const BaseCommand = require('./BaseCommand');
 
 module.exports = class NetworkCommand extends BaseCommand {
@@ -7,7 +8,12 @@ module.exports = class NetworkCommand extends BaseCommand {
   }
 
   _runInternal() {
-    return new Promise(resolve => setTimeout(resolve, 1000))
+    return timer(1000)
       .then(() => log.info(`network created: '${this.name}'`));
+  }
+
+  cleanUp() {
+    return timer(5000)
+      .then(() => log.info(`network removed: '${this.name}'`));
   }
 };

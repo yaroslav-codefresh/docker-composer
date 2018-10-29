@@ -23,7 +23,12 @@ module.exports = class Command {
   }
 
   _runInternal() {
-    log.warn('Command run on base class');
+    log.warn('Command run on base class. Please define "_runInternal()" on the child class');
+    return Promise.reject();
+  }
+
+  cleanUp() {
+    log.warn('method "cleanUp()" not defined. Please define "cleanUp()" on the child class');
     return Promise.reject();
   }
 };
