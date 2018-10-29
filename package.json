@@ -5,17 +5,21 @@
   "scripts": {
     "default": "node ./bin/www",
     "dev": "NODE_ENV=dev node ./bin/www",
-    "prod": "NODE_ENV=production node ./bin/www"
+    "prod": "NODE_ENV=production node ./bin/www",
+    "test": "mocha"
   },
   "dependencies": {
+    "chai": "^4.2.0",
     "debug": "~2.6.9",
     "dockerode": "^2.5.7",
     "express": "~4.16.0",
     "express-fileupload": "^1.0.0",
     "http-errors": "~1.6.2",
+    "mocha": "^5.2.0",
     "morgan": "~1.9.0",
     "nconf": "^0.10.0",
     "parser-yaml": "^0.1.1",
+    "sinon": "^7.1.0",
     "winston": "^3.1.0"
   }
 }

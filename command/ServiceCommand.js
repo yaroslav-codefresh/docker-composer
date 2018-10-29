@@ -36,7 +36,7 @@ module.exports = class ServiceCommand extends BaseCommand {
     if (this.container) {
       await this.container.stop();
       await this.container.remove();
-      log.info(`Service removed: '${this.name}' (${image})`)
+      log.info(`Service removed: '${this.name}'`)
     }
   }
 };
