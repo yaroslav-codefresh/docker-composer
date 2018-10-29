@@ -12,8 +12,7 @@ module.exports = class VolumeCommand extends BaseCommand {
       .then(() => log.info(`volume created: '${this.name}'`));
   }
 
-  cleanUp() {
-    return timer(5000)
-      .then(() => log.info(`volume removed: '${this.name}'`));
+  async cleanUp() {
+    log.info(`network removed: '${this.name}'`);
   }
 };

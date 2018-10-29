@@ -12,8 +12,7 @@ module.exports = class NetworkCommand extends BaseCommand {
       .then(() => log.info(`network created: '${this.name}'`));
   }
 
-  cleanUp() {
-    return timer(5000)
-      .then(() => log.info(`network removed: '${this.name}'`));
+  async cleanUp() {
+    log.info(`network removed: '${this.name}'`);
   }
 };

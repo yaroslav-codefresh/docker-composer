@@ -9,31 +9,34 @@ module.exports = class ServiceCommand extends BaseCommand {
     super(name, options)
   }
 
-  _runInternal() {
+  async _runInternal() {
     const {image} = this.options;
-    return docker
-      .pull(image, {repo: 'library'})
-      .then(() => docker.createContainer({
-        'AttachStdin': false,
-        'AttachStdout': false,
-        'AttachStderr': false,
-        'OpenStdin': false,
-        'StdinOnce': false,
-        'Cmd': [],
-        'Image': image,
-        'name': this.name
-      }))
-      .then(container => {
-        this.container = container;
-        return container.start()
-      })
-      .then(() => log.info(`service created: '${this.name}'`));
+    await docker.pull(image);
+
+    log.info(`Creating container: '${this.name}' (${image})`);
+    const container = await docker.createContainer({
+      'AttachStdin': false,
+      'AttachStdout': false,
+      'AttachStderr': false,
+      'OpenStdin': false,
+      'StdinOnce': false,
+      'Cmd': [],
+      'Image': image,
+      'name': this.name
+    });
+    this.container = container;
+
+    log.info(`Starting container: '${this.name}' (${image})`);
+    await container.start();
+
+    log.info(`Service created: '${this.name}' (${image})`);
   }
 
-  cleanUp() {
-    return timer(5000)
-      .then(() => this.container.stop())
-      .then(() => this.container.remove())
-      .then(() => log.info(`service removed: '${this.name}'`));
+  async cleanUp() {
+    if (this.container) {
+      await this.container.stop();
+      await this.container.remove();
+      log.info(`Service removed: '${this.name}' (${image})`)
+    }
   }
 };
