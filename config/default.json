@@ -1,2 +1,5 @@
 {
+  "docker": {
+    "socketPath": "/var/run/docker.sock"
+  }
 }

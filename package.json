@@ -17,8 +17,5 @@
     "nconf": "^0.10.0",
     "parser-yaml": "^0.1.1",
     "winston": "^3.1.0"
-  },
-  "devDependencies": {
-    "@types/node": "^10.12.0"
   }
 }
