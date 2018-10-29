@@ -20,6 +20,10 @@ module.exports = class DockerController {
 };
 
 const mimetype = 'text/yaml';
+
+/**
+ * extract first yaml from request
+ * */
 function extractYaml(files) {
   for (const name in files) {
     if (files.hasOwnProperty(name) && files[name].mimetype === mimetype) {

@@ -9,6 +9,11 @@ module.exports = class ServiceCommand extends BaseCommand {
     super(name, options)
   }
 
+  /**
+   * 1) pulls image
+   * 2) creates container
+   * 3) runs container
+   * */
   async _runInternal() {
     const {image} = this.options;
     await docker.pull(image);

@@ -14,6 +14,10 @@ module.exports = class Command {
     }
   }
 
+  /**
+   * Runs all the dependencies first, then _runInternal()
+   * @returns singleton promise for previous operations
+   * */
   run() {
     if (!this.executable) {
       this.executable = Promise.all(this.dependencies.map(command => command.run()))
@@ -22,13 +26,19 @@ module.exports = class Command {
     return this.executable;
   }
 
+  /**
+   * Must be implemented by child classes
+   * */
   _runInternal() {
-    log.warn('Command run on base class. Please define "_runInternal()" on the child class');
-    return Promise.reject();
+    const message = 'Command run on base class. Please define "_runInternal()" on the child class';
+    return Promise.reject(new Error(message));
   }
 
+  /**
+   * Must be implemented by child classes
+   * */
   cleanUp() {
-    log.warn('method "cleanUp()" not defined. Please define "cleanUp()" on the child class');
-    return Promise.reject();
+    const message = 'Method "cleanUp()" not defined. Please define "cleanUp()" on the child class';
+    return Promise.reject(new Error(message));
   }
 };

@@ -5,12 +5,22 @@ const ServiceCommand = require('../command/ServiceCommand');
 const NetworkCommand = require('../command/NetworkCommand');
 const VolumeCommand = require('../command/VolumeCommand');
 
+/**
+ * Service for applying "docker-compose" files.
+ * */
 module.exports = class DockerService {
   static applyYaml(fileContent) {
     const directives = yaml.parseSync(fileContent);
     return this.applyDirectives(directives);
   }
 
+  /**
+   * Creates and runs containers for "services".
+   * Runs dependencies before its` dependants.
+   * Removes all created containers after 5 sec.
+   *
+   * volumes and networks are yet simulated
+   * */
   static async applyDirectives({services, volumes = {}, networks = {}}) {
     const commands = {};
 

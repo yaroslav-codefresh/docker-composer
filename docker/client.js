@@ -7,6 +7,11 @@ class DockerClient extends Docker {
     super(options)
   }
 
+  /**
+   * promise wrapper for docker.pull() with some improvements:
+   * 1) adds tag to image name, if not exists
+   * 2) "streams" the pulling process and returns promise
+   * */
   async pull(image) {
     if (!image.includes(':')) {
       image = `${image}:latest`;

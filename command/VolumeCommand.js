@@ -2,6 +2,9 @@ const log = require('../logger');
 const timer = require('../helpers/timer');
 const BaseCommand = require('./BaseCommand');
 
+/**
+ * simulated volume creation
+ * */
 module.exports = class VolumeCommand extends BaseCommand {
   constructor(name, options) {
     super(name, options)
