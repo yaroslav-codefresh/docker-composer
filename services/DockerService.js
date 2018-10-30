@@ -8,7 +8,7 @@ const VolumeCommand = require('../command/VolumeCommand');
 /**
  * Service for applying "docker-compose" files.
  * */
-module.exports = class DockerService {
+class DockerService {
   static applyYaml(fileContent) {
     const directives = yaml.parseSync(fileContent);
     return this.applyDirectives(directives);
@@ -73,7 +73,7 @@ module.exports = class DockerService {
     timer(5000).then(() => runnable.forEach(c => c.cleanUp()));
     return {ok: true}
   }
-};
+}
 
 function getCommand(name, directives, commands, CommandType) {
   let command = commands[name];
@@ -83,3 +83,5 @@ function getCommand(name, directives, commands, CommandType) {
   }
   return command;
 }
+
+module.exports = DockerService;

@@ -1,10 +1,9 @@
 const log = require('../logger');
-const timer = require('../helpers/timer');
 const BaseCommand = require('./BaseCommand');
 const docker = require('../docker/client');
 
 
-module.exports = class ServiceCommand extends BaseCommand {
+class ServiceCommand extends BaseCommand {
   constructor(name, options) {
     super(name, options)
   }
@@ -44,4 +43,6 @@ module.exports = class ServiceCommand extends BaseCommand {
       log.info(`Service removed: '${this.name}'`)
     }
   }
-};
+}
+
+module.exports = ServiceCommand;

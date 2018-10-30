@@ -5,7 +5,7 @@ const BaseCommand = require('./BaseCommand');
 /**
  * simulated network creation
  * */
-module.exports = class NetworkCommand extends BaseCommand {
+class NetworkCommand extends BaseCommand {
   constructor(name, options) {
     super(name, options)
   }
@@ -18,4 +18,6 @@ module.exports = class NetworkCommand extends BaseCommand {
   async cleanUp() {
     log.info(`network removed: '${this.name}'`);
   }
-};
+}
+
+module.exports = NetworkCommand;

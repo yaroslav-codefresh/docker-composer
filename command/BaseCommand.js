@@ -1,6 +1,6 @@
 const log = require('../logger');
 
-module.exports = class Command {
+class BaseCommand {
   constructor(name, options) {
     this.name = name;
     this.options = options;
@@ -8,7 +8,7 @@ module.exports = class Command {
   }
 
   addDependency(dependency) {
-    if (dependency instanceof Command) {
+    if (dependency instanceof BaseCommand) {
       this.dependencies.push(dependency);
       log.info(`${this.name} -> ${dependency.name}`)
     }
@@ -41,4 +41,6 @@ module.exports = class Command {
     const message = 'Method "cleanUp()" not defined. Please define "cleanUp()" on the child class';
     return Promise.reject(new Error(message));
   }
-};
+}
+
+module.exports = BaseCommand;

@@ -1,8 +1,8 @@
-const log = require('../logger');
 const ValidationError = require('../errors/ValidationError');
 const DockerService = require('../services/DockerService');
+const extractYaml = require('../helpers/extractYaml');
 
-module.exports = class DockerController {
+class DockerController {
   static async applyYaml(req, res, next) {
     try {
       const file = extractYaml(req.files);
@@ -17,19 +17,8 @@ module.exports = class DockerController {
       next(e);
     }
   }
-};
-
-const mimetype = 'text/yaml';
-
-/**
- * extract first yaml from request
- * */
-function extractYaml(files) {
-  for (const name in files) {
-    if (files.hasOwnProperty(name) && files[name].mimetype === mimetype) {
-      log.info(`file found: ${name}`);
-      return files[name];
-    }
-  }
-  return null;
 }
+
+module.exports = DockerController;
+
+

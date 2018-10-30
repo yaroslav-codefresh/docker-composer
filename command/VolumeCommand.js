@@ -5,7 +5,7 @@ const BaseCommand = require('./BaseCommand');
 /**
  * simulated volume creation
  * */
-module.exports = class VolumeCommand extends BaseCommand {
+class VolumeCommand extends BaseCommand {
   constructor(name, options) {
     super(name, options)
   }
@@ -18,4 +18,6 @@ module.exports = class VolumeCommand extends BaseCommand {
   async cleanUp() {
     log.info(`network removed: '${this.name}'`);
   }
-};
+}
+
+module.exports = VolumeCommand;
